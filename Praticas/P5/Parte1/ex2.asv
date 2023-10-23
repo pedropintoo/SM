@@ -1,0 +1,13 @@
+%% a) 
+
+T_a = 0.02;
+Np = 5;
+T = 1;
+N = round(Np*T/T_a);
+
+t = (0:N-1)*T_a;
+x = sin(2*pi*t);
+
+[X, y] = ReconstroiSinal(x, T_a);
+
+plot
