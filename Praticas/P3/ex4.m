@@ -3,7 +3,10 @@ Np = 4;
 K = 100;
 T = 1;
 f = 1/T;
-t = 0:Ta:T;
+
+N = round(Np*T/Ta);
+
+t = (0:N-1)*Ta;
 
 %%x = square(2*pi*f*t);
 x = sawtooth(2*pi*f*t + pi/2, 1/2);

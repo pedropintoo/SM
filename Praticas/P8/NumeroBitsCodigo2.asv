@@ -1,0 +1,6 @@
+function NumBits = NumeroBitsCodigo2(Texto)
+    Simbolos,Frequencias = Alfabeto2(Texto);   
+    Ocurrencias = Frequencias * length(Texto);
+
+    NumBits = sum(1:length(Simbolos) * Ocurrencias)
+end

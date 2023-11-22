@@ -1,0 +1,9 @@
+function Simbolos = Alfabeto1(texto)
+    
+    Simbols(1) = Texto(1);
+    for n=2:length(texto)
+        if (sum(Simbols == Texto(k))
+        Simbolos(i) = texto(i);
+    end
+    
+end

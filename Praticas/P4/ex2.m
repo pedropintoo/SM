@@ -33,7 +33,7 @@ x = sin(5*2*pi*t) + cos(6*2*pi*t) + cos(7*2*pi*t - pi/4);
 
 Espetro(x, Ta);
 
-%% b) registado durante 50 periodos
+%% c) registado durante 100 periodos
 
 Ta = 0.001;
 Np = 100;

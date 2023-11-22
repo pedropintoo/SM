@@ -5,7 +5,7 @@ function [ak, bk] = fourierCoef(Ta, T0, x, K)
     f = 1 / T0;
 
     for i = 1:N
-        ak(1) = ak(1) + (1/N) * x(i);
+        ak(1) = ak(1) + (2/N) * x(i); % a_0
     end
 
     for k = 2:K

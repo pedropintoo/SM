@@ -1,0 +1,14 @@
+function [x, t] = ReconstroiFreq(X, f)
+    
+    N = length(X);
+    fa = max(f)*2; % f pertence a [-fa/2,fa/2]
+    ta = 1/fa;
+
+    % Calculando a Inverse Fast Fourier Transformer do sinal
+    x = ifft(ifftshift(X))*N;
+    t = (0:N-2)*ta; 
+    
+
+    plot(t,x);
+    grid on;
+end

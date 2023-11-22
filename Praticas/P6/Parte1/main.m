@@ -2,7 +2,7 @@
 % x - amostras
 % fa - frequencia de amostragem
 load('Guitar03.mat')
-%sound(x,fa)
+sound(x,fa)
 
 Ta = 1 / fa;
 subplot(2,3,[1,2,3]);
@@ -20,14 +20,14 @@ f1_filtrada = zeros(length(f),1);
 
 for i=1:length(f)
     if abs(f(i)) > 400 || abs(f(i)) < 100
-        f1_filtrad  a(i,1) = f(i);
+        f1_filtrada(i,1) = f(i);
         x1_filtrada(i,1) = X(i,1);
     end
 end
 
 %[Y, t] 
 subplot(2,3,4);
-[x1_fil, t1] = Reconstroi(x1_filtrada, f1_filtrada);
+[x1_fil, t1] = ReconstroiFreq(x1_filtrada, f1_filtrada);
 
 sound(real(x1_fil),fa)
 
@@ -46,7 +46,7 @@ end
 
 %[Y, t] 
 subplot(2,3,5);
-[x2_fil, t2] = Reconstroi(x2_filtrada, f2_filtrada);
+[x2_fil, t2] = ReconstroiFreq(x2_filtrada, f2_filtrada);
 
 sound(real(x2_fil),fa)
 
@@ -65,7 +65,7 @@ end
 
 %[Y, t] 
 subplot(2,3,6);
-[x3_fil, t2] = Reconstroi(x3_filtrada, f3_filtrada);
+[x3_fil, t2] = ReconstroiFreq(x3_filtrada, f3_filtrada);
 
 sound(real(x3_fil),fa)
 

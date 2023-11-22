@@ -7,7 +7,7 @@ frequencias = [10, 20, 30];
 f0 = gcd(gcd(10,20),30);
 T0 = 1/f0;
 
-colors = ["r.","g.","b."]
+colors = ["r.","g.","b."];
 
 % 3 Testes
 n_testes = 3;
@@ -17,12 +17,12 @@ for teste = 1:n_testes
     for i = 1:3
         fase =  2*pi*rand() - pi;
         x = x + sin(2.*pi.*frequencias(i)*t + fase);
-    end;
+    end
     
     plot(t,x,colors(teste));
-    potencia_associada(x,ts,T0) % Como nao depende da fase e sempre igual
+    fprintf("Potencia[%d] = %.2f\n",teste,potencia_associada(x,ts,T0)) % Como nao depende da fase e sempre igual
     hold on;
-end;
+end
 
 
 

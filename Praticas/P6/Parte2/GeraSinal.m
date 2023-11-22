@@ -1,5 +1,5 @@
 function [x, t] = GeraSinal(N, Ta)
-    t = [0 : (N-1)]'*Ta;
+    t = (0:(N-1))'*Ta;
     
     phi1 = randn(N,1)*pi;
     phi_i1 = zeros(N,1);
@@ -21,5 +21,5 @@ function [x, t] = GeraSinal(N, Ta)
     % sinosoide
     s = sin(2*pi*t);
 
-    x = r + s;
+    x = s + r;
 end
