@@ -1,9 +1,0 @@
-%% 3.
-
-clear;
-load("Mensagem.mat");
-NumBits = NumeroBitsCodigo2(Mensagem)
-
-Entropia = NumBits / length(Mensagem)
-% O valor teorico minimo e 1.49 bps
-% sendo 1.49 <= Entropia
