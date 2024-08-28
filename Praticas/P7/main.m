@@ -1,3 +1,4 @@
+close all;
 %% 1.
 % Carregar os dados do arquivo Guitar03.mat 
 % x - amostras
@@ -6,11 +7,20 @@ load('Guitar03.mat');
 
 Ta = 1 / fa;
 
+figure;
+Espetro(x,Ta);
+xlim([-fa/2 fa/2])
+xlabel('Frequency (Hz)')
+ylabel('Magnitude')
+grid on;
+
+%soundsc(x,fa)
 
 %% 2.
 teta=2*pi*(5000/fa);
 xr=x + 0.6*cos(teta*(0:length(x)-1)'+0.1*pi);
 
+figure;
 subplot(3,1,1);
 Espetro(xr,Ta);
 xlim([-fa/2 fa/2])
@@ -18,9 +28,9 @@ xlabel('Frequency (Hz)')
 ylabel('Magnitude')
 grid on;
 
-%% 3.
+%soundsc(xr,fa)
 
-% a)
+%% 3. a)
 
 R=0.9;
 teta=2*pi*(5000/fa);
@@ -32,10 +42,12 @@ subplot(3,1,2);
 plot(f, H);
 xlim([-fa/2 fa/2])
 xlabel('Frequency (Hz)')
-ylabel('Magnitude')
+ylabel('|Resposta em Frequencia|')
 grid on;
 
-% b)
+%soundsc(H,fa)
+
+%% 3.b)
 
 % Apply the filter to xr
 [y] = filter(num, den, xr);
@@ -46,9 +58,7 @@ xlabel('Frequency (Hz)')
 ylabel('Magnitude')
 grid on;
 
-%soundsc(x,fa)
-%soundsc(xr,fa);
-%soundsc(y,fa);
+soundsc(y,fa);
 
 %% 4. b)
 
@@ -96,11 +106,12 @@ grid on;
 %soundsc(x,fa)
 soundsc(y,fa);
 
-%% 4. d)
+%% 4. c) D = 9;
 
 [x,fa] = audioread('vozportugues.wav');
-figure;
+Ta = 1/fa;
 
+figure;
 subplot(3,1,1);
 Espetro(x,Ta);
 xlim([-fa/2 fa/2])
@@ -109,7 +120,7 @@ ylabel('Magnitude')
 grid on;
 
 a = 0.9;
-D = 10;
+D = 9;
 
 num=1;
 den=[1 zeros(1,D-1) a];
@@ -126,6 +137,46 @@ grid on;
 
 % Apply the filter to x
 [y] = filter(num, den, x);
+subplot(3,1,3);
+Espetro(y,Ta);
+xlim([-fa/2 fa/2])
+xlabel('Frequency (Hz)')
+ylabel('Magnitude')
+grid on;
+
+%soundsc(x,fa)
+soundsc(y,fa);
+
+%% 4. d) D = ...; corresponder a um atraso de 10ms
+
+[x,fa] = audioread('vozportugues.wav');
+
+figure;
+subplot(3,1,1);
+Espetro(x,Ta);
+xlim([-fa/2 fa/2])
+xlabel('Frequency (Hz)')
+ylabel('Magnitude')
+grid on;
+
+Delay = 0.01; 
+Gain = 0.9; % a
+
+D = round(Delay/Ta); % atraso de Delay (ms)
+
+num=1;
+den=[1 zeros(1,D-1) Gain];
+
+subplot(3,1,2);
+[H, f] = respFreq(num,den,fa);
+plot(f, H);
+xlim([-fa/2 fa/2])
+xlabel('Frequency (Hz)')
+ylabel('Magnitude')
+grid on;
+
+% Apply the filter to x
+y = Reverb(x,fa,Delay,Gain);
 subplot(3,1,3);
 Espetro(y,Ta);
 xlim([-fa/2 fa/2])

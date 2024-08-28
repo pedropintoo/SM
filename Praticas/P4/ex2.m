@@ -9,6 +9,17 @@ x = sin(2*pi*t);
 
 Espetro(x, Ta);
 
+%% a) com 2 periodos
+Ta = 0.25;
+Np = 1;
+T = 1;
+N = round(Np*T/Ta)*10;
+
+t = (0:N-1)*Ta;
+x = sin(2*pi*t) + 4*cos(2*pi*(4+0)*t);
+
+Espetro(x, Ta);
+
 %% a) com 100 periodos
 
 Ta = 0.001;

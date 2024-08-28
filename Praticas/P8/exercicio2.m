@@ -2,4 +2,4 @@
 
 clear;
 load("Mensagem.mat");
-[Simbolos,Frequencias] = Alfabeto2(Mensagem);
+[Simbolos,Frequencias] = FreqOcurrencia(Mensagem);
